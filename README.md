@@ -1,9 +1,12 @@
-# CS103a Express App Demo
+Brandeis University: COSI 103A - Fundamentals of Software Engineering
 
-This is a starter project which has a simple authentication module 
-and provides access to a mongoose database in the cloud.
+ This repository was created for class projects/assignments. It will primarily house the file contents of the PA02 assignment, which contains a dataset of Brandeis course selections, professors, and etc.
+ This repository was created for class projects/assignments. It will primarily house the file contents of the PA03 assignment, which contains a dataset of Brandeis course selections, professors, and etc.
 
+ Team Members: James Kong, Jeremy Bernstein, Hiro Chen
+ 
 ## Installation
+
 Download the project from github and download nodejs and npm from https://nodejs.org
 and cd into the folder
 
@@ -23,4 +26,3 @@ and start the project with
 ``` bash
 nodemon
 ```
-
