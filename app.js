@@ -239,8 +239,10 @@ app.get('/upsertDB',
     for (course of courses){
       const {subject,coursenum,section,term}=course;
       const num = getNum(coursenum);
+      const times = course.strTimes
       course.num=num
       course.suffix = coursenum.slice(num.length)
+      course.strTimes = times
       await Course.findOneAndUpdate({subject,coursenum,section,term},course,{upsert:true})
     }
     const num = await Course.find({}).count();
@@ -256,7 +258,7 @@ app.post('/courses/bySubject',
     const courses = await Course.find({subject:subject,independent_study:false}).sort({term:1,num:1,section:1})
     
     res.locals.courses = courses
-    res.locals.times2str = times2str
+    res.locals.strTimes= courses.strTimes
     //res.json(courses)
     res.render('courselist')
   }
@@ -268,7 +270,7 @@ app.get('/courses/show/:courseId',
     const {courseId} = req.params;
     const course = await Course.findOne({_id:courseId})
     res.locals.course = course
-    res.locals.times2str = times2str
+    res.locals.strTimes = course.strTimes
     //res.json(course)
     res.render('course')
   }
@@ -295,7 +297,23 @@ app.post('/courses/byInst',
                .sort({term:1,num:1,section:1})
     //res.json(courses)
     res.locals.courses = courses
-    res.locals.times2str = times2str
+    res.locals.strTimes = courses.strTimes
+    res.render('courselist')
+  }
+)
+
+/*
+4. Completed by James Kong on 4/15/2022
+*/
+app.post('/courses/byKeyword',
+  async (req,res,next) => {
+    const keyword = req.body.keyword;
+    const courses = 
+      await Course
+             .find({name:keyword})
+             .sort({term:1,num:1,section:1})
+    res.locals.courses = courses
+    res.locals.strTimes = courses.strTimes
     res.render('courselist')
   }
 )
