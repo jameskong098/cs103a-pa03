@@ -3,31 +3,27 @@
 -->
 <h1> Schedule</h1>
 <div class="d-flex flex-wrap">
-<% for (course of courses) {   
-    %>
+<% for (course of courses) {
+    const inst = course['instructor'];
+    const term = course.term;
+    const sem = term%10;
+    const semester=['none','Spring 2021','Summer 2021','Fall 2020']
+%>
 
     <div class="flex-container p-2 m-2 border border-info border-5">
         Course: <%= course['subject'] %> <%= course['coursenum'] %>-<%=course['section'] %> <%= course['name'] %> 
         <br>
-        Term: <%= course['term'] %>
+        Term: <%= semester[term%10] %>
         <br>
-        Instructor: <%= course['instructor'] %>
+        Instructor: <%= inst[0]+" "+inst[1]%> <br> <%= " ("+inst[2]+")" %>
         <br>
-        Enrolled: <%=course.enrolled %>
-        <br>
-        Limit: <%=course.limit || 999 %>
-        <br>
-        Waiting: <%= course.waiting %>
+        Enrolled: <%=course.enrolled %>, Limit: <%=course.limit || 999 %>, Waiting: <%= course.waiting %>
         <br> 
+        Times: <%= times2str(course.times) %>
+        <br>
         <a href="/schedule/remove/<%= course._id %>">Remove from Schedule</a>
         
         
     </div>
     <% } %>
 </div>
-
-<!--
-    <pre>
-        <%= JSON.stringify(courses,null,5) %>
-    </pre>
--->

@@ -348,6 +348,7 @@ app.get('/schedule/show',
                         .sort(x => x.term)
                         .map(x => x.courseId)
       res.locals.courses = await Course.find({_id:{$in: courseIds}})
+      res.locals.times2str = times2str
       res.render('schedule')
     } catch(e){
       next(e)
