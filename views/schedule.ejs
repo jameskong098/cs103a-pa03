@@ -1,16 +1,22 @@
-<ul>
-    <% for (course of courses){%>
-        <li>
-            <div class="flex-container">
-                <a href="/schedule/remove/<%= course._id %>">X</a>
-            <%= course['subject'] %>
-            <%= course.coursenum %>
-            <%= course.name %>
-            <%= course.term %>
-            </div> 
-        </li>
+<h1> Schedule</h1>
+<div class="d-flex flex-wrap">
+<% for (course of courses) {   
+    %>
+
+    <div class="flex-container p-2 m-2 border border-info border-5">
+        Course: <%= course['subj'] %> <%= course['num'] %> <%= course['title'] %> 
+        <br>
+        Term: <%= course['term'] %> 
+        <br>
+        Instructor: <%= course['inst'] %>
+        <br>
+        Enrolled: <%= course['enr'] %> enrolled
+        <br> 
+        
+        
+    </div>
     <% } %>
-</ul>
+</div>
 
 <!--
     <pre>
