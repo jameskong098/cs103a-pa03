@@ -4,13 +4,17 @@
     %>
 
     <div class="flex-container p-2 m-2 border border-info border-5">
-        Course: <%= course['subj'] %> <%= course['num'] %> <%= course['title'] %> 
+        Course: <%= course['subject'] %> <%= course['coursenum'] %>-<%=course['section'] %> <%= course['name'] %> 
         <br>
-        Term: <%= course['term'] %> 
+        Term: <%= course['term'] %>
         <br>
-        Instructor: <%= course['inst'] %>
+        Instructor: <%= course['instructor'] %>
         <br>
-        Enrolled: <%= course['enr'] %> enrolled
+        Enrolled: <%=course.enrolled %>
+        <br>
+        Limit: <%=course.limit || 999 %>
+        <br>
+        Waiting: <%= course.waiting %>
         <br> 
         
         
