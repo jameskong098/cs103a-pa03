@@ -233,6 +233,7 @@ function time2str(time){
 // this route loads in the courses into the Course collection
 // or updates the courses if it is not a new collection
 
+
 app.get('/upsertDB',
   async (req,res,next) => {
     //await Course.deleteMany({})
@@ -242,6 +243,7 @@ app.get('/upsertDB',
       //const times = course.strTimes
       course.num=num
       course.suffix = coursenum.slice(num.length)
+      //Did some changes
       course.strTimes = times2str(times);
       await Course.findOneAndUpdate({subject,coursenum,section,term},course,{upsert:true})
     }
