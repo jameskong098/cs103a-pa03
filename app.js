@@ -237,7 +237,7 @@ app.get('/upsertDB',
   async (req,res,next) => {
     //await Course.deleteMany({})
     for (course of courses){
-      const {subject,coursenum,section,term}=course;
+      const {subject,coursenum,section,term,times}=course;
       const num = getNum(coursenum);
       //const times = course.strTimes
       course.num=num
