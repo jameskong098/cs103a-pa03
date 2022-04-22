@@ -194,7 +194,7 @@ function getNum(coursenum){
 function times2str(times){
   // convert a course.times object into a list of strings
   // e.g ["Lecture:Mon,Wed 10:00-10:50","Recitation: Thu 5:00-6:30"]
-  if (!times || times.length==0){
+  if (! times || times.length == 0){
     return ["not scheduled"]
   } else {
     return times.map(x => time2str(x))

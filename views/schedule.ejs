@@ -11,19 +11,22 @@
 %>
 
     <div class="flex-container p-2 m-2 border border-info border-5">
-        Course: <%= course['subject'] %> <%= course['coursenum'] %>-<%=course['section'] %> <%= course['name'] %> 
+        Course: <%= course['subject'] %> <%= course['coursenum'] %>-<%=course['section'] %> <%= course['name'] %>
         <br>
         Term: <%= semester[term%10] %>
         <br>
         Instructor: <%= inst[0]+" "+inst[1]%> <br> <%= " ("+inst[2]+")" %>
         <br>
         Enrolled: <%=course.enrolled %>, Limit: <%=course.limit || 999 %>, Waiting: <%= course.waiting %>
-        <br> 
-        Times: <%= times2str(course.times) %>
+        <br>
+        Time:
+        <% for (t of course.strTimes ){%>
+          <%= t %> <br>
+        <%} %>
         <br>
         <a href="/schedule/remove/<%= course._id %>">Remove from Schedule</a>
-        
-        
+
+
     </div>
     <% } %>
 </div>
