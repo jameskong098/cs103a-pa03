@@ -239,7 +239,7 @@ app.get('/upsertDB',
     for (course of courses){
       const {subject,coursenum,section,term}=course;
       const num = getNum(coursenum);
-      const times = course.strTimes
+      //const times = course.strTimes
       course.num=num
       course.suffix = coursenum.slice(num.length)
       course.strTimes = times2str(times);
@@ -258,7 +258,7 @@ app.post('/courses/bySubject',
     const courses = await Course.find({subject:subject,independent_study:false}).sort({term:1,num:1,section:1})
 
     res.locals.courses = courses
-    res.locals.strTimes= courses.strTimes
+    //res.locals.strTimes= courses.strTimes
     //res.json(courses)
     res.render('courselist')
   }
@@ -270,7 +270,7 @@ app.get('/courses/show/:courseId',
     const {courseId} = req.params;
     const course = await Course.findOne({_id:courseId})
     res.locals.course = course
-    res.locals.strTimes = course.strTimes
+    //res.locals.strTimes = course.strTimes
     //res.json(course)
     res.render('course')
   }
@@ -297,7 +297,7 @@ app.post('/courses/byInst',
                .sort({term:1,num:1,section:1})
     //res.json(courses)
     res.locals.courses = courses
-    res.locals.strTimes = courses.strTimes
+    //res.locals.strTimes = courses.strTimes
     res.render('courselist')
   }
 )
@@ -313,7 +313,7 @@ app.post('/courses/byKeyword',
              .find({name:keyword})
              .sort({term:1,num:1,section:1})
     res.locals.courses = courses
-    res.locals.strTimes = courses.strTimes
+    //res.locals.strTimes = courses.strTimes
     res.render('courselist')
   }
 )
@@ -348,7 +348,7 @@ app.get('/schedule/show',
                         .sort(x => x.term)
                         .map(x => x.courseId)
       res.locals.courses = await Course.find({_id:{$in: courseIds}})
-      res.locals.times2str = times2str
+      //res.locals.times2str = times2str
       res.render('schedule')
     } catch(e){
       next(e)
